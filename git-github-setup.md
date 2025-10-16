@@ -4,15 +4,72 @@
 
 ## Install Git
 
-### Windows
+### Step 1: Download Git for Windows
 
-1. Go to [https://git-scm.com/downloads](https://git-scm.com/downloads)
-2. Download **Git for Windows**.
-3. Run the installer — just keep clicking **Next**, but make sure these options are selected:
+Go to the official Git website:
+ [https://git-scm.com/download/win](https://git-scm.com/download/win)
 
-   * *“Git from the command line and also from 3rd-party software”*
-   * *Use Visual Studio Code as Git’s default editor* (if you use VS Code)
-4. After installation, open **Git Bash** or **Command Prompt** and type:
+This will automatically download the latest `Git-x.x.x-64-bit.exe` installer.
+
+---
+
+### 🔹 Step 2: Run the Installer
+
+Double-click the downloaded installer and follow these key screens:
+
+1. **Select Components**
+   Keep all defaults checked — especially ✅ *“Git Bash Here”* (lets you right-click any folder and open Git Bash).
+
+2. **Choosing the default editor**
+
+   * Choose **Visual Studio Code** if available
+   * Otherwise, stick with **Vim** (but beginners will rarely use it)
+
+3. **Adjust PATH Environment**
+   ✅ Choose **“Git from the command line and also from 3rd-party software”**
+
+4. **Choose HTTPS transport backend**
+   Leave it as **“Use the OpenSSL library”**
+
+5. **Configuring line ending conversions**
+   ✅ Choose **“Checkout Windows-style, commit Unix-style line endings”**
+
+6. **Default terminal emulator**
+   ✅ Choose **“Use MinTTY (the default terminal of MSYS2)”** — that’s Git Bash!
+
+7. **Extra options**
+   Leave everything else as default — then click **Install**
+
+---
+
+### 🔹 Step 3: Verify Installation
+
+After installation:
+
+1. Open **Git Bash** (you can search it from Start Menu)
+2. Type:
+
+   ```bash
+   git --version
+   ```
+
+   You should see something like:
+
+   ```
+   git version 2.47.0.windows.1
+   ```
+---
+
+### What’s Git Bash Anyway?
+
+Git Bash gives Windows users a **Linux-like terminal** where you can run:
+
+* `git` commands (of course)
+* Linux commands like `ls`, `cat`, `touch`, etc.
+* SSH commands (`ssh-keygen`, `ssh-add`, etc.)
+
+So when you do your **SSH setup**, or your **Git workflows**, always use **Git Bash** — it’s much friendlier and consistent than Command Prompt.
+
 
 ```bash
 git --version
