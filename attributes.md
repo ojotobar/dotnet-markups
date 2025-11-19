@@ -184,3 +184,27 @@ public class RegisterUserDto
     public string PhoneNumber { get; set; }
 }
 ```
+
+public class ValidateModelFilter : ActionFilterAttribute
+{
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        if (!context.ModelState.IsValid)
+        {
+            var errors = context.ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .ToDictionary(
+                    k => k.Key,
+                    v => v.Value.Errors.Select(e => e.ErrorMessage)
+                );
+
+            var response = new
+            {
+                success = false,
+                errors
+            };
+
+            context.Result = new BadRequestObjectResult(response);
+        }
+    }
+}
