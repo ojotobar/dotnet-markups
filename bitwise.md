@@ -1,3 +1,51 @@
+### 👉 `BitConverter.ToInt32(bytes, 0)`
+
+Interprets the first 4 bytes in your `bytes` array as a **32-bit signed integer** (little-endian on most systems).
+So if your `bytes` look like:
+
+```
+[0xFF, 0x00, 0x10, 0xAA]
+```
+
+It’ll convert that chunk into an `int`.
+
+### 👉 `& 0x7FFFFFFF`
+
+This applies a bitwise *AND* with `0x7FFFFFFF`, which basically says:
+
+> “Give me the same number but force the sign bit to zero.”
+
+In human terms:
+You're converting a possibly negative `int` into a **non-negative** one by clearing bit 31.
+
+### Why do people do this?
+
+Often to generate a positive integer for:
+
+* hashing
+* randomization
+* indexing
+* non-negative IDs
+* partition keys
+* anything where negative values would ruin someone’s day
+
+### Example
+
+```csharp
+var number = BitConverter.ToInt32(bytes, 0);
+var positive = number & 0x7FFFFFFF;
+```
+
+Even if `number` was `-12345`, masking with `0x7FFFFFFF` gives you a positive int.
+
+### TL;DR
+
+That line:
+
+✔ Converts the first four bytes to an `int`
+✔ Ensures the result is always **positive**
+✔ Leaves all bits except the sign bit untouched
+
 # 🧠 What Are Bitwise Operators?
 
 They operate on integers **bit-by-bit**.
