@@ -1,0 +1,58 @@
+<section style="font-size: 18px;">
+        <h3>Tiered Rate Copy Tool</h3>
+        <p>
+            This tool copies <strong>existing tiered rate configurations</strong>
+            from a <strong>source payer</strong> to a <strong>target payer</strong>.
+        </p>
+        <p>
+            Only tasks that already have tiered rate setups on the
+            <strong>source payer</strong> are considered.
+        </p>
+        <p>
+            To prevent overwriting configurations, any task that already has a tiered
+            rate setup on the <strong>target payer</strong> will be
+            <strong>skipped automatically</strong>.
+        </p>
+
+        <h4>How it works</h4>
+        <ol>
+            <li>
+            The tool scans the source payer for tasks with configured tiered rates.
+            </li>
+            <li>
+            For each task found:
+            <ul>
+                <li>
+                If the target payer <strong>does not</strong> have tiered rates for that task,
+                the configuration is copied.
+                </li>
+                <li>
+                If the target payer <strong>already has</strong> tiered rates for that task,
+                the task is skipped.
+                </li>
+            </ul>
+            </li>
+            <li>
+            No existing tiered rate configurations are modified or overwritten.
+            </li>
+        </ol>
+
+        <div style="border-left: 4px solid #d9534f;background: #fff5f5;padding: 12px 16px;margin-top: 16px;">
+            <h4>Important</h4>
+            <ul>
+            <li>
+                This tool <strong>does not overwrite</strong> existing tiered rate setups
+                on the target payer.
+            </li>
+            <li>
+                Tasks without tiered rate configurations on the source payer
+                are <strong>not copied</strong>.
+            </li>
+            <li>
+                The operation is <strong>idempotent</strong> — running it multiple times
+                will not duplicate or alter existing configurations.
+            </li>
+            </ul>
+        </div>
+
+    </section>
