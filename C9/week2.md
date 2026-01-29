@@ -200,6 +200,3 @@ Console.WriteLine(isPrime ? "Prime" : "Not Prime");
 
 ---
 
-If you want, I can make a **visual cheat sheet** with **flow diagrams for if/else, switch, and loops** — basically a one-page guide you can keep on your desk.
-
-Do you want me to make that?
